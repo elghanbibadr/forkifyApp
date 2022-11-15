@@ -1,0 +1,13 @@
+{
+    "version": 3,
+    "mappings": "AGAA,AAAA,IAAI,CAAA;EACH,gBAAgB,EAAC,kDAAgD;EACjE,iBAAiB,EAAE,SAAS;EAC5B,MAAM,EAAE,KAAK;CACb",
+    "sources": [
+        "main.scss",
+        "partials/_variables.scss",
+        "partials/_mixins.scss",
+        "partials/_general.scss",
+        "partials/_typography.scss"
+    ],
+    "names": [],
+    "file": "main.css"
+}

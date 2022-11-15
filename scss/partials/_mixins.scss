@@ -1,0 +1,11 @@
+@mixin   desktop {
+    @media screen and (min-width:$desktop) {
+        @content;
+    }
+}
+
+@mixin flex-between($alignItem) {
+    display: flex;
+    justify-content: space-between;
+    align-items: $alignItem;
+}

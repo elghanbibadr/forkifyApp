@@ -1,0 +1,46 @@
+
+.btn{
+    padding: 16px 30px;
+    background-image: $gradient;
+    border: 0;
+    border-radius: 30px;
+    color: white;
+    cursor: pointer;
+    text-transform: uppercase;
+    @include flex-between(center);
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    transition: 0.4s transform;
+    &:hover{
+        transform: scale(1.1);
+    }
+
+    @include desktop{
+        padding: 20px 40px;
+    }
+}
+
+.btn svg{
+    height: 1.5rem;
+    width: 1.5rem;
+    fill: currentColor;
+}
+
+.btn .search__icon{
+    margin-right: 8px;
+}
+
+.btn .direction__icon{
+  margin-left: 5px;
+}
+
+.btn__direction{
+    padding-inline: 24px;
+    @include desktop{
+        padding-inline: 30px;
+    }
+}
+
+.btn .upload__icon{
+    margin-right: 5px;
+}

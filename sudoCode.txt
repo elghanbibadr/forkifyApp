@@ -1,0 +1,2 @@
+-ApI url :https://forkify-api.herokuapp.com/api/search?q=pizza;
+-API for recipee ingredient https://forkify-api.herokuapp.com/api/get?rId=46956

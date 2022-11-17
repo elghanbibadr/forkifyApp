@@ -218,4 +218,40 @@ h4 {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
 }
+
+main {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 350px 1fr;
+      grid-template-columns: 350px 1fr;
+}
+
+.recipeContainer {
+  background-color: white;
+  height: 50vh;
+}
+
+.recipeIngredientContainer {
+  padding: 2rem;
+}
+
+.recipeIngredientContainer img {
+  height: 2rem;
+}
+
+.recipeIngredientContainer .searchMsgBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  left: 30%;
+  top: 3rem;
+}
+
+.recipeIngredientContainer p {
+  text-align: center;
+  font-weight: 600;
+  width: 50%;
+  margin-left: 1rem;
+}
 /*# sourceMappingURL=main.css.map */

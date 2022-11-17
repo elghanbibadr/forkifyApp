@@ -1,0 +1,56 @@
+
+.nav{
+    padding: 1rem;
+    @include flex-between(center);
+    &__logo{
+        height: 4rem;
+    }
+  
+    &__searchBox{
+        width: 35%;
+        background-color: white;
+        border-radius: 30px;
+        display: inherit;
+        justify-content: inherit;
+        overflow: hidden;
+        input{
+            border: 0;
+            // border-radius:inherit;
+            width: 90%;
+            padding-left: 2rem;
+            outline: none;
+            margin-right: 2rem;
+        }
+    }
+
+
+ &__links{
+   display: inherit;
+   align-items: center;
+   #addRecipe{
+    font-size: 3rem;
+   }
+p{
+    margin-inline: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+   img{
+       height: 2rem;
+    }
+}
+
+&__link{
+ display: inherit;
+ cursor: pointer;
+ align-items:center;
+ margin-inline: 1rem;
+// padding-block: 3rem;
+transition: transform 0.3s;
+ height: 120%;
+ &:hover{
+   transform: scale(1.1);
+ }
+}
+}

@@ -52,5 +52,11 @@ p{
  cursor: pointer;
  align-items:center;
  margin-inline: 1rem;
+// padding-block: 3rem;
+transition: transform 0.3s;
+ height: 120%;
+ &:hover{
+   transform: scale(1.1);
+ }
 }
 }

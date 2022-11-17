@@ -5,9 +5,9 @@ const searchBtn=document.querySelector('.btn__search');
 const loader=document.querySelector('.loader')
 const recipeResultContainer=document.querySelector('.recipeResultContainer');
 const errorMsg=document.querySelector('.errorMsg');
-export let result;
+ let recipes;
+//  let recipeBoxs=document.querySelector('.recipe');
 
-import './data.js';
 // FUNCTIONS
 
 
@@ -28,17 +28,37 @@ const hideError=()=>{
 
 const clearInput=()=>searchInput.value='';
 
+const showRecipies=({recipes:results})=>{
+    let recipeBox;
+ results.forEach(result=>{
+    let {publisher,title,recipe_id,image_url}=result;
+     recipeBox=document.createElement('div');
+    recipeBox.classList.add('recipe');
+    recipeBox.innerHTML=`
+    <img class='recipe__image' src=${image_url}>
+    <div class="recipe__desc">
+        <h4 class='recipe__title'>${title}</h4>;
+        <p class='recipe__publisher'>${publisher}</p>
+    </div>
+    `;
+    recipeResultContainer.append(recipeBox)
+     console.log(recipes)
+     
+     
+    })
+    recipeBox.addEventListener('click',()=>{
+       console.log('clicked')
+   })
+}
 
 const getResult=async(recipeName)=>{
   showLoader();
   
        try{
           const response=await fetch(`${RrecipeUrl}${recipeName}`)
-          const data=await response.json();
-          result=data;
+           recipes=await response.json();
           hideLoader();
-        //    console.log(data)
-
+          showRecipies(recipes)
           if (!response.ok)
           throw new Error('No recipes found for your query! Please try again');
        }
@@ -46,9 +66,7 @@ const getResult=async(recipeName)=>{
         showError(error.message)
       setTimeout(()=> hideError(),3000);
       }
-   
-    //   console.log(result)
-}
+   }
 
 searchBtn.addEventListener('click',(e)=>{
     if (!searchInput.value){
@@ -58,8 +76,4 @@ searchBtn.addEventListener('click',(e)=>{
     getResult(searchInput.value);
     clearInput();
     })
-
-
-
-
 

@@ -6,6 +6,7 @@
 @import './partials/btn';
 @import './partials/nav';
 @import './partials/loader';
+@import './partials/recipes';
 main{
     display: grid;
     grid-template-columns: 350px 1fr;
@@ -15,19 +16,22 @@ main{
 
 .recipeResultContainer{
     background-color: white;
-    height: 50vh;
+    // height: 60vh;
+    // height: 3rem;
+    
 }
 
 .recipeIngredientContainer{
     padding: 2rem;
-    img{
-        height: 2rem;
-    }
+    
     .searchMsgBox{
         display: flex;
         position: relative;
         left: 30%;
         top: 3rem;
+        img{
+          height: 2rem;
+        }
     }
     p{
          text-align: center;

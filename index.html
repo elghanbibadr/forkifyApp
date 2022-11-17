@@ -13,11 +13,11 @@
     <nav class="nav">
      <img src="/assets/forkify app.png" alt="forkify logo" class="nav__logo">
      <div class="nav__searchBox">
-        <input placeholder="Search over 1.000.000 recipes" type="text" class="input-search">
-        <button class="btn btn__search">
-            <svg class="search__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg>
-            <span>Search</span>
-           </button> 
+          <input placeholder="Search over 1.000.000 recipes" type="text" class="input-search">
+          <button class="btn btn__search">
+              <svg class="search__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg>
+              <span>Search</span>
+             </button>
      </div>
 
      <div class="nav__links">
@@ -34,7 +34,10 @@
      </div>
     </nav>
     <main>
-    <div class="recipeContainer"></div>
+    <div class="recipeResultContainer">
+      <p class="errorMsg hidden"></p>
+      <div class="loader hidden"></div>
+    </div>
     <div class="recipeIngredientContainer">
       <div class="searchMsgBox">
          <img src="/assets/face-smile-regular.svg" alt="">
@@ -45,6 +48,6 @@
     </div>
     </main>
 </div>
-
+<script defer type="module" src="/Javascript/main.js"></script>
 </body>
 </html>

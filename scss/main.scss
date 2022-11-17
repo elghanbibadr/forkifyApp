@@ -5,13 +5,15 @@
 @import './partials/typography';
 @import './partials/btn';
 @import './partials/nav';
-
+@import './partials/loader';
 main{
     display: grid;
     grid-template-columns: 350px 1fr;
 }
 
-.recipeContainer{
+
+
+.recipeResultContainer{
     background-color: white;
     height: 50vh;
 }
@@ -33,4 +35,14 @@ main{
          width: 50%;
          margin-left: 1rem;
     }
+}
+
+
+.hidden{
+    display: none;
+}
+
+.errorMsg{
+    font-weight: 600;
+    padding: 3rem 4rem;
 }

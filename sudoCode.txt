@@ -1,2 +1,7 @@
 -ApI url :https://forkify-api.herokuapp.com/api/search?q=pizza;
 -API for recipee ingredient https://forkify-api.herokuapp.com/api/get?rId=46956
+-when the user search for s recipe get the value
+-make an api call according to that value
+-handle error and appear a messge when requestn not ok
+-else get all result and map them to the result container
+-create a div for each result and give it a class of result

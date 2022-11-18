@@ -4,17 +4,20 @@ const RrecipeUrl='https://forkify-api.herokuapp.com/api/search?q=';
 const ingredientUrl='https://forkify-api.herokuapp.com/api/get?rId='
 const searchInput=document.querySelector('.input-search');
 const searchBtn=document.querySelector('.btn__search');
-const loader=document.querySelector('.loader')
+const loader1=document.querySelector('.loader1')
+const recipeIngredientContainer=document.querySelector('.recipeIngredientContainer');
 const recipeResultContainer=document.querySelector('.recipeResult');
 const errorMsg=document.querySelector('.errorMsg');
+const searchMsgBox=document.querySelector('.searchMsgBox')
+const loader2=document.querySelector('.loader2')
  let recipes;
 
 // FUNCTIONS
 const clearRecipeResultContainer=()=>recipeResultContainer.innerHTML=0;
 
-const showLoader=()=>loader.classList.remove('hidden');
+const showLoader=(element)=> element.classList.remove('hidden');
 
-const hideLoader=()=>loader.classList.add('hidden');
+const hideLoader=(element)=>element.classList.add('hidden');
 
 
 const showError =(message)=>{
@@ -49,12 +52,13 @@ const showRecipies=({recipes:results})=>{
 
 const getResult=async(recipeName)=>{
     clearRecipeResultContainer();
-    showLoader();
+    showLoader(loader1);
   
      try{
           const response=await fetch(`${RrecipeUrl}${recipeName}`)
            recipes=await response.json();
-          hideLoader();
+           console.log(recipes)
+          hideLoader(loader1);
           if (!response.ok){
             throw new Error('No recipes found for your query! Please try again');
            
@@ -70,23 +74,18 @@ const getResult=async(recipeName)=>{
 
 
  async function getIngredients(){
+    console.log(searchMsgBox)
+    searchMsgBox.classList.add('hidden')
+        showLoader(loader2)
       let recipeId=this.id;
-    const response=await fetch(`${ingredientUrl}${recipeId}`)
-    const  ingredients=await response.json();
-    console.log(ingredients)
-//     hideLoader();
-//     if (!response.ok){
-//       throw new Error('No recipes found for your query! Please try again');
-     
-//       }else{
-//           showRecipies(recipes)
-//       }
-//  }
-//  catch(error){ 
-//   showError(error.message)
-// setTimeout(()=> hideError(),1000);
-// }
-   }
+      
+          const response=await fetch(`${ingredientUrl}${recipeId}`)
+          const  ingredients=await response.json();
+          hideLoader(loader2);
+          console.log(ingredients)
+      }
+    // now we need to bind the results to the ingredient container
+   
 //EVENT LISTENER
 searchBtn.addEventListener('click',(e)=>{
     if (!searchInput.value){

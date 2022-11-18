@@ -57,7 +57,6 @@ const getResult=async(recipeName)=>{
      try{
           const response=await fetch(`${RrecipeUrl}${recipeName}`)
            recipes=await response.json();
-           console.log(recipes)
           hideLoader(loader1);
           if (!response.ok){
             throw new Error('No recipes found for your query! Please try again');

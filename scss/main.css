@@ -300,6 +300,8 @@ main {
 
 .recipeResultContainer {
   background-color: white;
+  height: 68vh;
+  overflow: hidden;
 }
 
 .recipeIngredientContainer {

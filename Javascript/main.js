@@ -1,16 +1,16 @@
+'use strict';
+
 const RrecipeUrl='https://forkify-api.herokuapp.com/api/search?q=';
 const ingredientUrl='https://forkify-api.herokuapp.com/api/get?rId='
 const searchInput=document.querySelector('.input-search');
 const searchBtn=document.querySelector('.btn__search');
 const loader=document.querySelector('.loader')
-const recipeResultContainer=document.querySelector('.recipeResultContainer');
+const recipeResultContainer=document.querySelector('.recipeResult');
 const errorMsg=document.querySelector('.errorMsg');
  let recipes;
-//  let recipeBoxs=document.querySelector('.recipe');
 
 // FUNCTIONS
-
-
+const clearRecipeResultContainer=()=>recipeResultContainer.innerHTML=0;
 
 const showLoader=()=>loader.classList.remove('hidden');
 
@@ -34,6 +34,7 @@ const showRecipies=({recipes:results})=>{
     let {publisher,title,recipe_id,image_url}=result;
      recipeBox=document.createElement('div');
     recipeBox.classList.add('recipe');
+    recipeBox.id=recipe_id;
     recipeBox.innerHTML=`
     <img class='recipe__image' src=${image_url}>
     <div class="recipe__desc">
@@ -41,33 +42,52 @@ const showRecipies=({recipes:results})=>{
         <p class='recipe__publisher'>${publisher}</p>
     </div>
     `;
-    recipeResultContainer.append(recipeBox)
-     console.log(recipes)
-     
-     
-    })
-    recipeBox.addEventListener('click',()=>{
-       console.log('clicked')
-   })
+    recipeResultContainer.append(recipeBox)    
+    recipeBox.addEventListener('click',getIngredients)
+    }); 
 }
 
 const getResult=async(recipeName)=>{
-  showLoader();
+    clearRecipeResultContainer();
+    showLoader();
   
-       try{
+     try{
           const response=await fetch(`${RrecipeUrl}${recipeName}`)
            recipes=await response.json();
           hideLoader();
-          showRecipies(recipes)
-          if (!response.ok)
-          throw new Error('No recipes found for your query! Please try again');
+          if (!response.ok){
+            throw new Error('No recipes found for your query! Please try again');
+           
+            }else{
+                showRecipies(recipes);
+            }
        }
        catch(error){ 
         showError(error.message)
-      setTimeout(()=> hideError(),3000);
+      setTimeout(()=> hideError(),1000);
       }
    }
 
+
+ async function getIngredients(){
+      let recipeId=this.id;
+    const response=await fetch(`${ingredientUrl}${recipeId}`)
+    const  ingredients=await response.json();
+    console.log(ingredients)
+//     hideLoader();
+//     if (!response.ok){
+//       throw new Error('No recipes found for your query! Please try again');
+     
+//       }else{
+//           showRecipies(recipes)
+//       }
+//  }
+//  catch(error){ 
+//   showError(error.message)
+// setTimeout(()=> hideError(),1000);
+// }
+   }
+//EVENT LISTENER
 searchBtn.addEventListener('click',(e)=>{
     if (!searchInput.value){
         alert('please Enter a valid recipe name')
@@ -75,5 +95,6 @@ searchBtn.addEventListener('click',(e)=>{
     }
     getResult(searchInput.value);
     clearInput();
-    })
+})
+
 

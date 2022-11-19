@@ -1,0 +1,30 @@
+.recipeIngredient__capacity{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .time-logo{
+        img{
+            height: 2rem;
+        }
+    }
+}
+
+
+.recipeIngredient__time-box{
+    display: inherit;
+}
+
+.recipe-bg{
+    width: 100%;
+    height: 300px;
+    margin-bottom: 2rem;
+    display: inline-block;
+}
+
+
+.recipeIngredient__servings{
+    display: inherit;
+    img{
+        height: 2rem;
+    }
+}

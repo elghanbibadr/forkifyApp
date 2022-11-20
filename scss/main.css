@@ -343,6 +343,29 @@ img {
   height: 3rem;
 }
 
+.ingredientInfo__list-container {
+  background-color: #f2efee;
+  margin-top: 3rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.ingredientInfo__list-container h2 {
+  margin-block: 3rem;
+}
+
+.ingredientInfo__list-container li {
+  font-size: 1.8rem;
+  margin-block: 0.6rem;
+}
+
+.ingredient-list {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+}
+
 main {
   display: -ms-grid;
   display: grid;
@@ -352,7 +375,6 @@ main {
 
 .recipeResultContainer {
   background-color: white;
-  height: 68vh;
   overflow: hidden;
 }
 

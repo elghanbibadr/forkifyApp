@@ -45,3 +45,24 @@ img{
 .save-recipe{
     height: 3rem;
 }
+
+// list container
+.ingredientInfo__list-container{
+    background-color: #f2efee;
+    margin-top: 3rem;
+    padding: 2rem;
+    text-align: center;
+    h2{
+        margin-block: 3rem;
+    }
+    li{
+        font-size: 1.8rem;
+        margin-block: 0.6rem;
+    }
+}
+
+.ingredient-list{
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}

@@ -295,9 +295,9 @@ h4 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-top: 2rem;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -324,6 +324,23 @@ h4 {
 
 .recipeIngredient__servings img {
   height: 2rem;
+}
+
+img {
+  cursor: pointer;
+}
+
+.serving-box {
+  display: inherit;
+}
+
+.serving-box img {
+  height: 2rem;
+  margin-inline: 10px;
+}
+
+.save-recipe {
+  height: 3rem;
 }
 
 main {

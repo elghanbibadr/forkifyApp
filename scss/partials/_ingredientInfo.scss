@@ -1,6 +1,7 @@
 .recipeIngredient__capacity{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    margin-top: 2rem;
     align-items: center;
     .time-logo{
         img{
@@ -27,4 +28,20 @@
     img{
         height: 2rem;
     }
+}
+
+img{
+    cursor: pointer;
+}
+
+.serving-box{
+    display: inherit;
+    img{
+        height: 2rem;
+        margin-inline: 10px;
+    }
+}
+
+.save-recipe{
+    height: 3rem;
 }

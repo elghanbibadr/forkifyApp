@@ -10,7 +10,9 @@ const recipeResultContainer=document.querySelector('.recipeResult');
 const errorMsg=document.querySelector('.errorMsg');
 const searchMsgBox=document.querySelector('.searchMsgBox')
 const loader2=document.querySelector('.loader2')
- let recipes;
+let ingredientInfo=document.querySelector('.ingredientInfo')
+let recipes;
+let ingredientList=document.querySelector('.ingredient-list');
 
 // FUNCTIONS
 const clearRecipeResultContainer=()=>recipeResultContainer.innerHTML=0;
@@ -72,6 +74,25 @@ const getResult=async(recipeName)=>{
    }
 
 
+   const showIngredient=(items)=>{
+    ingredientList.innerHTML='';
+    let {recipe:{ingredients,image_url,title}}=items;
+    ingredientInfo.classList.remove('hidden')
+    ingredientInfo.querySelector('.recipe-bg').src=image_url;  
+  ingredients.forEach(value=>{
+     value.slice(0,1);  
+     let li=document.createElement('li');
+     li.className='list-ingredient-item';
+     li.textContent= value;
+     ingredientList.append(li)
+    })
+  
+    //  mapped.forEach(element=>ingredientList.append(element))
+    console.log(ingredientList)
+    console.log(ingredients[0][0])
+
+   }
+
  async function getIngredients(){
     console.log(searchMsgBox)
     searchMsgBox.classList.add('hidden')
@@ -81,7 +102,7 @@ const getResult=async(recipeName)=>{
           const response=await fetch(`${ingredientUrl}${recipeId}`)
           const  ingredients=await response.json();
           hideLoader(loader2);
-          console.log(ingredients)
+          showIngredient(ingredients);
       }
     // now we need to bind the results to the ingredient container
    
@@ -94,5 +115,15 @@ searchBtn.addEventListener('click',(e)=>{
     getResult(searchInput.value);
     clearInput();
 })
+
+
+
+
+
+
+
+
+
+
 
 

@@ -366,6 +366,10 @@ img {
       grid-template-columns: 1fr 1fr;
 }
 
+.ingredient-list li {
+  text-align: left;
+}
+
 main {
   display: -ms-grid;
   display: grid;

@@ -57,7 +57,7 @@ img{
         color: $darkOrange;
     }
     li{
-        font-size: 1.8rem;
+        font-size: 1.5rem;
         margin-block: 0.6rem;
     }
 }
@@ -66,7 +66,12 @@ img{
 
     display: grid;
     grid-template-columns: 1fr 1fr;
+   margin-left: 3rem;
     li{
         text-align: left;
+        &::before{
+            content: url(/assets/check-solid.svg);
+             margin-right: 10px;
+        }
     }
 }

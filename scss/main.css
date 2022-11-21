@@ -356,7 +356,7 @@ img {
 }
 
 .ingredientInfo__list-container li {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   margin-block: 0.6rem;
 }
 
@@ -365,10 +365,16 @@ img {
   display: grid;
   -ms-grid-columns: 1fr 1fr;
       grid-template-columns: 1fr 1fr;
+  margin-left: 3rem;
 }
 
 .ingredient-list li {
   text-align: left;
+}
+
+.ingredient-list li::before {
+  content: url(/assets/check-solid.svg);
+  margin-right: 10px;
 }
 
 main {

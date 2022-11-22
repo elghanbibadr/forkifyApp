@@ -15,7 +15,6 @@ body {
   background-image: linear-gradient(to right bottom, #fbdb89, #f48982);
   background-repeat: no-repeat;
   padding: 2rem;
-  height: 100vh;
   color: #615551;
   font-family: Nunito Sans,sans-serif;
   letter-spacing: 1px;
@@ -24,8 +23,8 @@ body {
 
 .container {
   background-color: #f9f5f3;
-  height: 100vh;
   margin: 3rem auto;
+  height: 150vh;
   max-width: 120rem;
   border-radius: 10px;
 }
@@ -386,7 +385,7 @@ main {
 
 .recipeResultContainer {
   background-color: white;
-  overflow: hidden;
+  height: 100%;
 }
 
 .recipeIngredientContainer {
@@ -420,5 +419,35 @@ main {
 .errorMsg {
   font-weight: 600;
   padding: 3rem 4rem;
+}
+
+.btn-controler {
+  padding: 10px !important;
+  border: 0;
+  cursor: pointer;
+  background-color: #f2efee;
+  border-radius: 15px;
+  color: #f38e82;
+  -webkit-transition: 0.3s background;
+  transition: 0.3s background;
+}
+
+.btn-controler:hover {
+  background-color: rgba(204, 204, 204, 0.47);
+}
+
+.btn-controler-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1rem;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+button[data-value='0'] {
+  opacity: 0;
+  visibility: hidden;
 }
 /*# sourceMappingURL=main.css.map */

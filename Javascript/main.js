@@ -13,7 +13,7 @@ const loader2=document.querySelector('.loader2')
 let ingredientInfo=document.querySelector('.ingredientInfo')
 let recipes;
 let ingredientList=document.querySelector('.ingredient-list');
-
+let btnController=document.querySelector('.btn-controler-box');
 // FUNCTIONS
 const clearRecipeResultContainer=()=>recipeResultContainer.innerHTML=0;
 
@@ -35,11 +35,13 @@ const clearInput=()=>searchInput.value='';
 
 const showRecipies=({recipes:results})=>{
     let recipeBox;
- results.forEach(result=>{
+    let count=recipes.count;
+ results.forEach((result,index)=>{
     let {publisher,title,recipe_id,image_url}=result;
      recipeBox=document.createElement('div');
-    recipeBox.classList.add('recipe');
+    recipeBox.classList.add('recipe','hidden');
     recipeBox.id=recipe_id;
+    recipeBox.setAttribute('recipe-index',index);
     recipeBox.innerHTML=`
     <img class='recipe__image' src=${image_url}>
     <div class="recipe__desc">
@@ -47,9 +49,17 @@ const showRecipies=({recipes:results})=>{
         <p class='recipe__publisher'>${publisher}</p>
     </div>
     `;
+    btnController.classList.remove('hidden');
+    getFirstPageResult(recipeBox,count)
     recipeResultContainer.append(recipeBox)    
     recipeBox.addEventListener('click',getIngredients)
     }); 
+}
+
+const getFirstPageResult=(elements,total)=>{
+  if (+recipeBox.getAttribute('recipe-index') < total/4 ){
+      recipeBox.classList.remove('hidden');
+  }
 }
 
 const getResult=async(recipeName)=>{
@@ -71,10 +81,10 @@ const getResult=async(recipeName)=>{
         showError(error.message)
       setTimeout(()=> hideError(),1000);
       }
-   }
+}
 
 
-   const showIngredient=(items)=>{
+const showIngredient=(items)=>{
     ingredientList.innerHTML='';
     let {recipe:{ingredients,image_url,title}}=items;
     ingredientInfo.classList.remove('hidden')
@@ -87,13 +97,11 @@ const getResult=async(recipeName)=>{
      ingredientList.append(li)
     })
   
-    //  mapped.forEach(element=>ingredientList.append(element))
     console.log(ingredientList)
-    console.log(ingredients[0][0])
 
-   }
+}
 
- async function getIngredients(){
+async function getIngredients(){
     console.log(searchMsgBox)
     searchMsgBox.classList.add('hidden')
         showLoader(loader2)

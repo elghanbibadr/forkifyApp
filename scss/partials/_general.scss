@@ -13,7 +13,7 @@ body{
  background-image:$gradient; 
  background-repeat: no-repeat;
  padding: 2rem;
- height: 100vh;  
+//  height: 100vh;  
  color: $textColor;
  font-family: Nunito Sans,sans-serif;
  letter-spacing: 1px;
@@ -22,8 +22,8 @@ body{
 
 .container{
     background-color: $headerBg;
-    height: 100vh;
     margin: 3rem auto;
+    height: 150vh;
     max-width: 120rem;
     border-radius: 10px;
 }

@@ -11,7 +11,7 @@ const errorMsg=document.querySelector('.errorMsg');
 const searchMsgBox=document.querySelector('.searchMsgBox')
 const loader2=document.querySelector('.loader2')
 let ingredientInfo=document.querySelector('.ingredientInfo')
-let recipes;
+let recipes,recipeBox;
 let ingredientList=document.querySelector('.ingredient-list');
 let btnController=document.querySelector('.btn-controler-box');
 let recipeToBeVisiblePerPage=7;
@@ -35,8 +35,15 @@ const hideError=()=>{
 
 const clearInput=()=>searchInput.value='';
 
+const splitResults=(elements)=>{
+elements.forEach(element=>{
+element.classList.add('hidden')
+if ((+element.getAttribute('recipe-index') >count) &&  (+element.getAttribute('recipe-index') < recipeToBeVisiblePerPage)){
+    element.classList.remove('hidden');
+}
+})
+}
 const showRecipies=({recipes:results})=>{
-    let recipeBox;
     let count=recipes.count;
  results.forEach((result,index)=>{
     let {publisher,title,recipe_id,image_url}=result;
@@ -53,19 +60,19 @@ const showRecipies=({recipes:results})=>{
     </div>
     `;
     btnController.classList.remove('hidden');
-    splitResults(recipeBox,count)
     recipeResultContainer.append(recipeBox)    
     recipeBox.addEventListener('click',getIngredients)
-    }); 
+}); 
+splitResults(document.querySelectorAll('.recipe'))
 }
 
-const splitResults=(element,total)=>{
-  if ((+element.getAttribute('recipe-index') >count) &&  (+element.getAttribute('recipe-index') < recipeToBeVisiblePerPage)){
-      element.classList.remove('hidden');
-  }
-}
+
 const getNextPageResult=(e)=>{
-    console.log(e.target)
+     if (e.target.classList.contains('btn-controler')){
+         count=count+8;
+         recipeToBeVisiblePerPage=recipeToBeVisiblePerPage+8;
+         splitResults(document.querySelectorAll('.recipe'))
+     };
 }
 
 const getResult=async(recipeName)=>{

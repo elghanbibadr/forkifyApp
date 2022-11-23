@@ -66,11 +66,44 @@ const showRecipies=({recipes:results})=>{
 splitResults(document.querySelectorAll('.recipe'))
 }
 
+let currentNextPage=2;
+let currentPreviousPage=0;
+const updateBtnNumber=(targetBtn)=>{
+    if (!targetBtn.classList.contains('btn-controler'))return;
+   if(targetBtn.getAttribute('data-type')==='increase'){
+    nextBtnTarget(targetBtn);
+   }
+   if (targetBtn.getAttribute('data-type')==='decrease'){
+     previousBtnTarget(targetBtn)
+}
+
+}
+const previousBtnTarget=(targetBtn)=>{
+    count=count-8;
+    recipeToBeVisiblePerPage=recipeToBeVisiblePerPage-8;
+      currentNextPage--;
+      currentPreviousPage--;
+      targetBtn.textContent=`page ${currentPreviousPage}`;
+      targetBtn.nextElementSibling.textContent=`page ${currentNextPage}`;
+ 
+   }
+
+   const nextBtnTarget=(targetBtn)=>{
+       count=count+8;
+       recipeToBeVisiblePerPage=recipeToBeVisiblePerPage+8;
+        currentNextPage++;
+        currentPreviousPage++;
+         targetBtn.textContent=`page ${currentNextPage}`;
+        if(targetBtn.previousElementSibling.textContent.includes('0')){
+            targetBtn.previousElementSibling.classList.remove('invisibleBtn')
+         }
+         targetBtn.previousElementSibling.textContent=`page ${currentPreviousPage}`;
+   }
+
 
 const getNextPageResult=(e)=>{
-     if (e.target.classList.contains('btn-controler')){
-         count=count+8;
-         recipeToBeVisiblePerPage=recipeToBeVisiblePerPage+8;
+    updateBtnNumber(e.target);
+     if (e.target.classList.contains('btn-controler')){ 
          splitResults(document.querySelectorAll('.recipe'))
      };
 }

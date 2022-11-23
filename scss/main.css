@@ -446,7 +446,7 @@ main {
           justify-content: space-between;
 }
 
-button[data-value='0'] {
+.invisibleBtn {
   opacity: 0;
   visibility: hidden;
 }
